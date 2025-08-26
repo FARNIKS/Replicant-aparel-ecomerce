@@ -42,7 +42,7 @@ function Perfil() {
       {payments.length > 0 &&
         payments.map((payment) => (
           <div className="w-full flex flex-row items-center justify-evenly">
-            <h3>{payment.amount / 100} </h3>
+
             <span className="flex  ">
               {" "}
               {payment.items.map((item) => (
@@ -51,6 +51,9 @@ function Perfil() {
                 </p>
               ))}
             </span>
+
+            <h3>{payment.amount / 100} </h3>
+            <p>{payment.currency}</p>
           </div>
         ))}
 

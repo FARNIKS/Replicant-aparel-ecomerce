@@ -1,31 +1,22 @@
 import React from "react";
+import "./LoginForm.css";
 
 function LoginForm({ onSubmit }) {
   return (
-    <form
-      onSubmit={(e) => onSubmit(e)}
-      className="flex flex-col w-full items-center"
-    >
+    <form onSubmit={(e) => onSubmit(e)} className="login-form">
       <input
-        className="w-5/6 border-2 border-slate-300 px-5 py-2 my-1 rounded-md"
+        className="login-form-input"
         type="text"
         name="email"
-        placeholder="test@test.com"
+        placeholder="Correo electrónico"
       />
       <input
-        className="w-5/6 border-2 border-slate-300 px-5 py-2 my-1 rounded-md"
+        className="login-form-input"
         type="password"
         name="password"
-        placeholder="123456"
+        placeholder="Contraseña"
       />
-      <button
-        className="bg-azul
-        px-5 py-2 rounded-md my-1 text-white
-        hover:bg-blue-700
-        "
-      >
-        Iniciar Sesión
-      </button>
+      <button className="login-form-button">Iniciar Sesión</button>
     </form>
   );
 }

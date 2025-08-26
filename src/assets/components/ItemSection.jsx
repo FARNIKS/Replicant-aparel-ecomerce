@@ -1,5 +1,6 @@
 import React from "react";
 import ItemCard from "./ItemCard";
+import "./ItemSection.css";
 
 function ItemSection({ productos, title }) {
   return (
@@ -8,7 +9,7 @@ function ItemSection({ productos, title }) {
         {" "}
         {title} :
       </h3>
-      <ul className=" flex flex-row w-full justify-evenly items-center">
+      <ul className="container-items">
         {productos
           ? productos.map((p) => (
               <li key={p.id}>

@@ -1,0 +1,42 @@
+.ItemCard {
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.25rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 15px;
+  background-color: #64616e;
+}
+
+.ItemCard a {
+  text-decoration: none; /* Quita el subrayado */
+  color: inherit; /* Usa el color del texto padre */
+  background: none; /* Quita fondo si lo tiene */
+  border: none;
+  color: black;
+}
+
+.ItemCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.price-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ItemCard h3 {
+  margin: 0.5rem 0;
+}
+
+.ItemCard p {
+  margin: 0.5rem 0;
+}

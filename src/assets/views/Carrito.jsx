@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import "./Carrito.css";
 import { useCarritoContext } from "../contexts/carritoContext";
 import { useUserContext } from "../contexts/userContext";
 import { Layout, CartItem } from "../components";
 import { Link } from "react-router-dom";
 import { loginEmail, createCheckoutSession } from "../functions/";
 import { MdOutlineClose } from "react-icons/md";
+import "./Carrito.css";
 
 function Carrito() {
   const { carrito } = useCarritoContext();
-
   const { user } = useUserContext();
   const [isModal, setIsModal] = useState(false);
 
@@ -30,30 +31,20 @@ function Carrito() {
 
   function LoginForm() {
     return (
-      <form
-        onSubmit={(e) => login(e)}
-        className="flex flex-col w-full items-center"
-      >
+      <form onSubmit={(e) => login(e)} className="carrito-login-form">
         <input
-          className="w-5/6 border-2 border-slate-300 px-5 py-2 my-1 rounded-md"
+          className="carrito-login-input"
           type="text"
           name="email"
-          placeholder="test@test.com"
+          placeholder="Correo electrónico"
         />
         <input
-          className="w-5/6 border-2 border-slate-300 px-5 py-2 my-1 rounded-md"
+          className="carrito-login-input"
           type="password"
           name="password"
-          placeholder="123456"
+          placeholder="Contraseña"
         />
-        <button
-          className="bg-azul
-        px-5 py-2 rounded-md my-1 text-white
-        hover:bg-blue-700
-        "
-        >
-          Iniciar Sesión
-        </button>
+        <button className="carrito-login-button">Iniciar Sesión</button>
       </form>
     );
   }
@@ -74,28 +65,28 @@ function Carrito() {
     }
   }
 
-  const Modal = () => (
-    <div
-      id="modal-comprar"
-      className={`absolute top-0 left-0 bg-slate-600/40 w-screen h-screen z-30 backdrop-blur-sm flex flex-col justify-center items-center ${
-        isModal ? "block" : "hidden"
-      }`}
-    >
-      <div className="bg-white w-1/3 h-1/3 flex flex-col items-center justify-evenly">
-        {" "}
-        <span
-          className="ml-auto mr-5 cursor-pointer"
-          onClick={() => setIsModal(false)}
-        >
-          <MdOutlineClose />
-        </span>
-        <h3 className="font-bold text-slate-500 italic">
-          Inicia Sesión para comprar:
-        </h3>
-        <LoginForm onSubmit={login} />
+  const Modal = () =>
+    !user && (
+      <div
+        id="modal-comprar"
+        className={`absolute top-0 left-0 bg-slate-600/40 w-screen h-screen z-30 backdrop-blur-sm flex flex-col justify-center items-center ${
+          isModal ? "block" : "hidden"
+        }`}
+      >
+        <div className="bg-white w-1/3 h-1/3 flex flex-col items-center justify-evenly">
+          <span
+            className="ml-auto mr-5 cursor-pointer"
+            onClick={() => setIsModal(false)}
+          >
+            <MdOutlineClose />
+          </span>
+          <h3 className="font-bold text-slate-500 italic">
+            Inicia Sesión para comprar:
+          </h3>
+          <LoginForm onSubmit={login} />
+        </div>
       </div>
-    </div>
-  );
+    );
 
   return (
     <Layout>

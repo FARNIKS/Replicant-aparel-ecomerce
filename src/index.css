@@ -1,16 +1,18 @@
-body{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 500px;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+ul {
+  list-style: none;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-
+a {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./ItemCard.css";
 
 function ItemCard({ product }) {
   return (
     <Link to={`/producto/${product.id}`}>
       <div
-        className="w-[350px] h-[350px] flex flex-col grow justify-center items-center shadow-2xl rounded-xl border-slate-300 border-2
-      hover:scale-105
-      "
+        className="ItemCard"
       >
         <img
           src={product.images[0]}
@@ -15,7 +14,8 @@ function ItemCard({ product }) {
           className="min-w-full h-auto"
         />
         <h3 className="font-bold text-xl">{product.name}</h3>
-        <div className="flex items-center">
+        <p className="text-slate-500">{product.description}</p>
+        <div className="price-items">
           <p className="text-slate-600 line-through">
             ${(product.price.unit_amount * 1.5) / 100}
           </p>
@@ -24,8 +24,8 @@ function ItemCard({ product }) {
             <p className="font-bold mx-1 text-lg">
               ${product.price.unit_amount / 100}
             </p>
-            {product.price.currency}
           </span>
+          {product.price.currency}
         </div>
       </div>
     </Link>

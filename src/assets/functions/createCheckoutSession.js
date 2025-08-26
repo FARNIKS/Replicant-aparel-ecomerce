@@ -6,7 +6,7 @@ async function createCheckoutSession(uid, cart) {
   // añadimos documento para indicar a stripe inteción de compra
   const { id } = await addDoc(collectionRef, {
     mode: "payment",
-    success_url: "https://e-commerce-stripe-firebase.web.app/perfil",
+    success_url: window.location.origin,
     cancel_url: window.location.origin,
     collect_shipping_address: true,
     line_items: cart.map((item) => {

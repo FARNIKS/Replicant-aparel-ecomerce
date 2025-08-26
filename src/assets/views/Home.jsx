@@ -20,7 +20,6 @@ function Home() {
 
   return (
     <Layout>
-      <ItemSection title="Lo más vendido" productos={productos} />
       <ItemSection title="Nuevas Entradas" productos={productos} />
     </Layout>
   );
