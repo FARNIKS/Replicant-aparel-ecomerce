@@ -39,19 +39,17 @@ function Perfil() {
           <LoginForm onSubmit={login} />
         </div>
       )}
-      {payments.length > 0 &&
+      {user &&
+        payments.length > 0 &&
         payments.map((payment) => (
           <div className="w-full flex flex-row items-center justify-evenly">
-
-            <span className="flex  ">
-              {" "}
+            <span className="flex">
               {payment.items.map((item) => (
                 <p key={item.description} className="mx-3">
                   {item.description}
                 </p>
               ))}
             </span>
-
             <h3>{payment.amount / 100} </h3>
             <p>{payment.currency}</p>
           </div>
