@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ItemCard from "../components/ItemCard";
+import ItemCard from "../components/ItemCard/ItemCard.jsx";
 import getActiveProducts from "../functions/getActiveProducts";
-import ItemSection from "../components/ItemSection";
-
-import { Layout } from "../components/";
+import ItemSection from "../components/ItemSection/ItemSection.jsx";
+import Layout from "../components/Layout/Layout.jsx";
 
 function Home() {
   const [productos, setProductos] = useState(null);

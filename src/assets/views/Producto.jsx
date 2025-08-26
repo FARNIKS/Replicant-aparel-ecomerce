@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getProductById, createCheckoutSession } from "../functions";
 import { useCarritoContext } from "../contexts/carritoContext";
 import { useUserContext } from "../contexts/userContext";
-import { Layout } from "../components/";
+import Layout from "../components/Layout/Layout.jsx";
 
 function Producto() {
   const { id } = useParams();

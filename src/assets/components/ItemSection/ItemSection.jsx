@@ -1,5 +1,5 @@
 import React from "react";
-import ItemCard from "./ItemCard";
+import ItemCard from "../ItemCard/ItemCard.jsx";
 import "./ItemSection.css";
 
 function ItemSection({ productos, title }) {

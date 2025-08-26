@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import loginGoogle from "../functions/loginEmail";
 import { createCheckoutSession } from "../functions/";
 import { MdOutlineClose } from "react-icons/md";
+import "./Carrito.css";
 
 function Carrito() {
   const { carrito } = useCarritoContext();
@@ -29,10 +30,7 @@ function Carrito() {
 
   function LoginForm() {
     return (
-      <button
-        className="bg-azul px-5 py-2 rounded-md my-1 text-white hover:bg-blue-700"
-        onClick={login}
-      >
+      <button className="carrito-login-button" onClick={login}>
         Iniciar sesión con Google
       </button>
     );
@@ -63,12 +61,6 @@ function Carrito() {
     >
       <div className="bg-white w-1/3 h-1/3 flex flex-col items-center justify-evenly">
         {" "}
-        <span
-          className="ml-auto mr-5 cursor-pointer"
-          onClick={() => setIsModal(false)}
-        >
-          <MdOutlineClose />
-        </span>
         <h3 className="font-bold text-slate-500 italic">
           Inicia Sesión para comprar:
         </h3>

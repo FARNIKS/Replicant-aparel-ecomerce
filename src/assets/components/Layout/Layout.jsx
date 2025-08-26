@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai";
-import { useCarritoContext } from "../contexts/carritoContext";
+import { useCarritoContext } from "../../contexts/carritoContext";
 import "./Layout.css";
 
 function Layout({ children }) {
@@ -39,7 +39,7 @@ function Layout({ children }) {
         <p>Grupo 3</p>
         <p>
           <a
-            href="https://www.sena.edu.co"
+            href="https://github.com/FARNIKS/simulacion-ecomerce"
             target="_blank"
             rel="noopener noreferrer"
           >
