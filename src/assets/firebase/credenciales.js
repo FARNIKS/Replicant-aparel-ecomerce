@@ -10,7 +10,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBHN_vq9fE5rHDhAsRVdKCf5WcQVv6hMkk",
   authDomain: "e-commerce-stripe-814f8.firebaseapp.com",
   projectId: "e-commerce-stripe-814f8",
-  storageBucket: "e-commerce-stripe-814f8.firebasestorage.app",
+  storageBucket: "e-commerce-stripe-814f8.appspot.com",
   messagingSenderId: "661511768946",
   appId: "1:661511768946:web:36f8738eee725021456beb",
 };

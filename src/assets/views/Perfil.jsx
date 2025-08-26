@@ -3,13 +3,11 @@ import { signOut } from "firebase/auth";
 import { Layout, LoginForm } from "../components";
 import { useUserContext } from "../contexts/userContext";
 import { auth } from "../firebase/credenciales";
-import { loginEmail, getPaymentsByUID } from "../functions/";
+import loginGoogle from "../functions/loginEmail";
+import { getPaymentsByUID } from "../functions/";
 function Perfil() {
-  function login(e) {
-    e.preventDefault();
-    const correo = e.target.email.value;
-    const password = e.target.password.value;
-    loginEmail(correo, password);
+  async function login() {
+    await loginGoogle();
   }
 
   const { user } = useUserContext();

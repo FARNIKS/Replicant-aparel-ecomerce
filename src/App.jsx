@@ -10,14 +10,18 @@ import {
 } from "./assets/views";
 import { auth } from "./assets/firebase/credenciales";
 import { useUserContext } from "./assets/contexts/userContext";
+import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const { user, setUser } = useUserContext();
-  onAuthStateChanged(auth, (firebaseUser) => {
-    if (firebaseUser) setUser(firebaseUser);
-    if (!firebaseUser) setUser(null);
-  });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) setUser(firebaseUser);
+      else setUser(null);
+    });
+    return () => unsubscribe();
+  }, [setUser]);
 
   return (
     <Routes>
