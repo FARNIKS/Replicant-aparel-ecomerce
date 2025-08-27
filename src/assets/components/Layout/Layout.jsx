@@ -7,20 +7,14 @@ import "./Layout.css";
 function Layout({ children }) {
   const { carrito } = useCarritoContext();
   return (
-    <div className="w-screen h-screen flex flex-col overflow-x-hidden relative">
+    <div className="layout-main">
       <header className="header-replicant">
         <nav className="nav-replicant">
           <Link to="/" className="font-bold italic text-3xl">
-            {" "}
             <h1>Replicant Apparel</h1>
           </Link>
           <div className="header-icons">
-            <Link to="/carrito" className="mx-5 relative">
-              <span
-                className={`absolute w-3 h-3 rounded-full bg-red-600 top-0 right-0  translate-x-1/2 -translate-y-1/2  ${
-                  carrito.length > 0 ? "opacity-100" : "opacity-0"
-                }`}
-              ></span>
+            <Link to="/carrito">
               <AiOutlineShoppingCart size={30} />
             </Link>
             <Link to="/perfil">
@@ -29,9 +23,7 @@ function Layout({ children }) {
           </div>
         </nav>
       </header>
-      <main className="w-full h-full flex flex-col justify-center items-center">
-        {children}
-      </main>
+      <main className="layout-content">{children}</main>
       <footer className="footer">
         <p>Proyecto E-commerce SENA &copy; 2025</p>
         <p>Centro Industrial y de aviación Sena</p>
