@@ -27,10 +27,7 @@ function Perfil() {
     <Layout>
       {user ? (
         <p className="text-xl">
-          Bienvenido,{" "}
-          <span className="font-bold">
-            {user.email} - {user.uid}
-          </span>
+          Bienvenido, <span className="font-bold">{user.email}</span>
         </p>
       ) : (
         <div className="w-1/2 flex flex-col items-center">

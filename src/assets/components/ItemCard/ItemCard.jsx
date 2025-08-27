@@ -5,16 +5,13 @@ import "./ItemCard.css";
 function ItemCard({ product }) {
   return (
     <Link to={`/producto/${product.id}`}>
-      <div
-        className="ItemCard"
-      >
+      <div className="ItemCard">
         <img
           src={product.images[0]}
           alt={product.name}
           className="min-w-full h-auto"
         />
         <h3 className="font-bold text-xl">{product.name}</h3>
-        <p className="text-slate-500">{product.description}</p>
         <div className="price-items">
           <p className="text-slate-600 line-through">
             ${(product.price.unit_amount * 1.5) / 100}
