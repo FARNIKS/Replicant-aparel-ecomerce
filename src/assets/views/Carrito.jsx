@@ -9,7 +9,10 @@ import { MdOutlineClose } from "react-icons/md";
 import "./Carrito.css";
 
 function Carrito() {
-  const { carrito } = useCarritoContext();
+  const { carrito, setCarrito } = useCarritoContext();
+  function removeFromCart(id) {
+    setCarrito(carrito.filter((producto) => producto.id !== id));
+  }
 
   const { user } = useUserContext();
   const [isModal, setIsModal] = useState(false);
@@ -84,7 +87,17 @@ function Carrito() {
           </Link>
         </>
       ) : (
-        carrito?.map((producto) => <CartItem producto={producto} />)
+        carrito?.map((producto) => (
+          <div key={producto.id} className="carrito-item flex items-center">
+            <CartItem producto={producto} />
+            <button
+              className="bg-red-500 text-white px-3 py-1 rounded ml-2"
+              onClick={() => removeFromCart(producto.id)}
+            >
+              Eliminar
+            </button>
+          </div>
+        ))
       )}
       {carrito?.length > 0 && (
         <button
