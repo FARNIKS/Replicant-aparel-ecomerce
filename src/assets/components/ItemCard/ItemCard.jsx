@@ -2,30 +2,33 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./ItemCard.css";
 
-function ItemCard({ product }) {
+function ItemCard({ product, addToCart }) {
   return (
-    <Link to={`/producto/${product.id}`}>
-      <div className="ItemCard">
+    <div className="ItemCard">
+      <Link to={`/producto/${product.id}`}>
         <img
           src={product.images[0]}
           alt={product.name}
-          className="min-w-full h-auto"
+          className="product-image"
         />
-        <h3 className="font-bold text-xl">{product.name}</h3>
-        <div className="price-items">
-          <p className="text-slate-600 line-through">
-            ${(product.price.unit_amount * 1.5) / 100}
+      </Link>
+      <h3 className="font-bold text-xl">{product.name}</h3>
+      <div className="price-items">
+        <p className="text-slate-600 line-through">
+          ${(product.price.unit_amount * 1.5) / 100}
+        </p>
+        <span className="mx-2"> → </span>
+        <span className="flex items-center">
+          <p className="font-bold mx-1 text-lg">
+            ${product.price.unit_amount / 100}
           </p>
-          <span className="mx-2"> →</span>
-          <span className="flex items-center">
-            <p className="font-bold mx-1 text-lg">
-              ${product.price.unit_amount / 100}
-            </p>
-          </span>
-          {product.price.currency}
-        </div>
+        </span>
+        {product.price.currency}
       </div>
-    </Link>
+      <button onClick={addToCart} className="add-to-cart-button">
+        AÑADIR A CARRITO
+      </button>
+    </div>
   );
 }
 
