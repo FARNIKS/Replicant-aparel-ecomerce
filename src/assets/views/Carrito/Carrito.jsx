@@ -32,11 +32,7 @@ function Carrito() {
   }
 
   function LoginForm() {
-    return (
-      <button className="carrito-login-button" onClick={login}>
-        Iniciar sesión con Google
-      </button>
-    );
+    return <button onClick={login}>Iniciar sesión con Google</button>;
   }
 
   function isAuthenticated() {

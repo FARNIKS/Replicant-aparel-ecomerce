@@ -5,11 +5,10 @@ import Layout from "../../components/Layout/Layout.jsx";
 function NotFound() {
   return (
     <Layout>
-      <h1 className="text-4xl font-bold my-5">Not Found</h1>
-      <Link to="/" className="text-xl">
-        {" "}
+      <h1>Not Found</h1>
+      <Link to="/">
         No encontramos lo que buscabas,
-        <span className="underline text-azul">
+        <span>
           ¿ por qué no regresas al inicio?
         </span>
       </Link>

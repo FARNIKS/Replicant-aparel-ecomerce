@@ -1,3 +1,14 @@
+/* Layout principal para mantener el footer abajo */
+.layout-main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-content {
+  flex: 1;
+  width: 100%;
+}
 .header-replicant {
   background-color: #64616e;
   color: white;

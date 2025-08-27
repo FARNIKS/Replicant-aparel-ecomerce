@@ -26,22 +26,22 @@ function Perfil() {
   return (
     <Layout>
       {user ? (
-        <p className="text-xl">
-          Bienvenido, <span className="font-bold">{user.email}</span>
+        <p>
+          Bienvenido, <span>{user.email}</span>
         </p>
       ) : (
-        <div className="w-1/2 flex flex-col items-center">
-          <p className="text-xl my-3">No estas logueado</p>
+        <div>
+          <p>No estas logueado</p>
           <LoginForm onSubmit={login} />
         </div>
       )}
       {user &&
         payments.length > 0 &&
         payments.map((payment) => (
-          <div className="w-full flex flex-row items-center justify-evenly">
-            <span className="flex">
+          <div>
+            <span>
               {payment.items.map((item) => (
-                <p key={item.description} className="mx-3">
+                <p key={item.description}>
                   {item.description}
                 </p>
               ))}
@@ -54,7 +54,6 @@ function Perfil() {
       {user && (
         <button
           onClick={() => signOut(auth)}
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-10"
         >
           Cerrar Sesión
         </button>
