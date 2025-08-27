@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { signOut } from "firebase/auth";
-import Layout from "../components/Layout/Layout.jsx";
-import LoginForm from "../components/LoginForm/LoginForm.jsx";
-import { useUserContext } from "../contexts/userContext";
-import { auth } from "../firebase/credenciales";
-import loginGoogle from "../functions/loginEmail";
-import { getPaymentsByUID } from "../functions/";
+import Layout from "../../components/Layout/Layout.jsx";
+import LoginForm from "../../components/LoginForm/LoginForm.jsx";
+import { useUserContext } from "../../contexts/userContext";
+import { auth } from "../../firebase/credenciales";
+import loginGoogle from "../../functions/loginEmail";
+import { getPaymentsByUID } from "../../functions";
 function Perfil() {
   async function login() {
     await loginGoogle();

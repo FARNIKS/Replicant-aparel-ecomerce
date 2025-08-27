@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useCarritoContext } from "../contexts/carritoContext";
-import { useUserContext } from "../contexts/userContext";
-import { Layout, CartItem } from "../components";
+import { useCarritoContext } from "../../contexts/carritoContext";
+import { useUserContext } from "../../contexts/userContext";
+import { Layout, CartItem } from "../../components";
 import { Link } from "react-router-dom";
-import loginGoogle from "../functions/loginEmail";
-import { createCheckoutSession } from "../functions/";
+import loginGoogle from "../../functions/loginEmail";
+import { createCheckoutSession } from "../../functions/";
 import { MdOutlineClose } from "react-icons/md";
 import "./Carrito.css";
 
