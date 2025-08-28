@@ -1,3 +1,32 @@
+/* Centrado y columna para el contenido del modal */
+.modal-content {
+  background: #fff;
+  width: 33%;
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+}
+.container-items-carrito {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 5%;
+  align-items: center;
+  width: 100%;
+}
+
 .carrito-login-button {
   background-color: #2563eb; /* azul */
   padding: 0.5rem 1.25rem; /* px-5 py-2 */
@@ -12,4 +41,47 @@
 
 .carrito-login-button:hover {
   background-color: #1d4ed8; /* azul más oscuro */
+}
+
+.modal-comprar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(71, 85, 105, 0.4); /* bg-slate-600/40 */
+  z-index: 30;
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-close-btn:hover {
+  background: #b71c1c;
+  transform: scale(1.1);
+}
+
+.modal-content {
+  background: #fff;
+  width: 33%;
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem; /* Puedes ajustar el espacio entre elementos */
+}
+
+.carrito-items-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0 auto 2rem auto;
 }
