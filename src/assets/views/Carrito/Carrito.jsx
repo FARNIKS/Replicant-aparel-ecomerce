@@ -38,6 +38,9 @@ function Carrito() {
   function LoginForm() {
     return (
       <button className="carrito-login-button" onClick={login}>
+        <div className="icon-google">
+          <img src="/Google.svg" alt="Google" />
+        </div>
         Iniciar sesión con Google
       </button>
     );
@@ -72,9 +75,13 @@ function Carrito() {
           </h3>
           <LoginForm onSubmit={login} />
           <button
-            className="carrito-login-button"
+            className="carrito-home-button"
             onClick={handleGoHome}
-            style={{ marginTop: "1rem" }}
+            style={{
+              marginTop: "1rem",
+              backgroundColor: "#10b981",
+              color: "#fff",
+            }}
           >
             Volver al inicio
           </button>
