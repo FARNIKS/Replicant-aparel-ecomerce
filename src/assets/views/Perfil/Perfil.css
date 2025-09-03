@@ -1,5 +1,5 @@
 .container-perfil {
-  padding: 10px 20%;
+  padding: 10px 5%;
 }
 
 .header-perfil {
@@ -36,6 +36,7 @@
   border-radius: 14px;
   box-shadow: 0 2px 16px rgba(47, 125, 197, 0.1);
   padding: 1.7rem 1.2rem;
+  padding-top: 10px;
   margin-top: 1rem;
   display: flex;
   justify-content: center;
@@ -59,4 +60,14 @@
   padding: 2.5rem 2rem 2rem 2rem;
   position: relative;
   overflow: hidden;
+}
+
+@media (min-width: 1000px) {
+  .container-perfil {
+    padding: 10px 20%;
+  }
+
+  .perfil-hoja {
+    padding: 2.5rem 1rem 2rem 1rem;
+  }
 }

@@ -66,29 +66,35 @@ function Perfil() {
         {user && (
           <div className="header-perfil">
             <h2>Tu Perfil</h2>
-            <div className="descripcion-perfil" style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: '1rem'}}>
-              <p style={{margin: 0}}>
+            <div className="descripcion-perfil">
+              <p style={{ margin: 0 }}>
                 Bienvenido, <span>{user.email}</span>
               </p>
               {user && (
-                <button 
+                <button
                   onClick={() => signOut(auth)}
                   style={{
                     margin: 0,
-                    background: '#2f7dc5', // azul
-                    color: '#fff',
-                    border: 'none',
-                    borderRadius: '8px',
-                    padding: '0.5rem 1.1rem',
+                    background: "#2f7dc5", // azul
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "8px",
+                    padding: "0.5rem 1.1rem",
                     fontWeight: 700,
-                    cursor: 'pointer',
-                    fontSize: '1rem',
-                    boxShadow: '0 2px 8px rgba(47,125,197,0.10)',
-                    transition: 'background 0.2s, transform 0.2s',
+                    cursor: "pointer",
+                    fontSize: "1rem",
+                    boxShadow: "0 2px 8px rgba(47,125,197,0.10)",
+                    transition: "background 0.2s, transform 0.2s",
                   }}
-                  onMouseOver={e => e.currentTarget.style.background = '#d44474'} // rosado
-                  onMouseOut={e => e.currentTarget.style.background = '#2f7dc5'}
-                >Cerrar Sesión</button>
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.background = "#d44474")
+                  } // rosado
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.background = "#2f7dc5")
+                  }
+                >
+                  Cerrar Sesión
+                </button>
               )}
             </div>
           </div>
@@ -96,6 +102,15 @@ function Perfil() {
         {user && (
           <div className="perfil-tabla-container">
             <table className="tabla-compras">
+              <caption
+                style={{
+                  textAlign: "center",
+                  fontWeight: "bold",
+                  paddingBottom: "1rem",
+                }}
+              >
+                Registro de pedidos realizados
+              </caption>
               <thead>
                 <tr>
                   <th style={{ textAlign: "center" }}>Producto</th>
@@ -108,7 +123,9 @@ function Perfil() {
                   payments.map((payment, idx) =>
                     payment.items.map((item, i) => (
                       <tr key={item.description + idx + i}>
-                        <td style={{ textAlign: "left" }}>{item.description}</td>
+                        <td style={{ textAlign: "center" }}>
+                          {item.description}
+                        </td>
                         <td style={{ textAlign: "center" }}>
                           {(payment.amount / 100).toFixed(2)}
                         </td>
