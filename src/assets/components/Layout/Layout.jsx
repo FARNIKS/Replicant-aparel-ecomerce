@@ -1,4 +1,5 @@
 import React from "react";
+import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai";
 import { useCarritoContext } from "../../contexts/carritoContext";
@@ -10,7 +11,23 @@ function Layout({ children }) {
     <div className="layout-main">
       <header className="header-replicant">
         <nav className="nav-replicant">
-          <Link to="/" className="font-bold italic text-3xl">
+          <Link
+            to="/"
+            className="font-bold italic text-3xl"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <img
+              src="/Replicant apparel.svg"
+              alt="Replicant Apparel Logo"
+              style={{
+                width: "32px",
+                height: "32px",
+              }}
+            />
             <h1>Replicant Apparel</h1>
           </Link>
           <div className="header-icons">
@@ -25,19 +42,27 @@ function Layout({ children }) {
       </header>
       <main className="layout-content">{children}</main>
       <footer className="footer">
-        <p>Proyecto E-commerce SENA &copy; 2025</p>
-        <p>Centro Industrial y de aviación Sena</p>
-        <p>Miguel Jimenez - Sebastian Sanchez - Rolan Diaz</p>
-        <p>Grupo 3</p>
-        <p>
-          <a
-            href="https://github.com/FARNIKS/simulacion-ecomerce"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Github
-          </a>
-        </p>
+        <div className="footer-content">
+          <p>Proyecto E-commerce SENA &copy; 2025</p>
+          <p>Centro Industrial y de aviación Sena</p>
+          <p>Miguel Jimenez - Sebastian Sanchez - Rolan Diaz</p>
+          <p>Grupo 3</p>
+          <p>
+            <a
+              href="https://github.com/FARNIKS/simulacion-ecomerce"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.5rem",
+              }}
+            >
+              <AiFillGithub size={22} /> Github
+            </a>
+          </p>
+        </div>
       </footer>
     </div>
   );
