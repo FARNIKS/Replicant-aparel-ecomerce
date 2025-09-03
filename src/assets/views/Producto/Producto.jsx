@@ -103,34 +103,6 @@ function Producto() {
           </div>
         </div>
       </div>
-      <div className="container-producto">
-        <div
-          className="icono-web-header"
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "10px",
-          }}
-        >
-          <img
-            src={require("../../../../public/Replicant apparel.svg")}
-            alt="Replicant Apparel Logo"
-            style={{ width: "22px", height: "22px" }}
-          />
-          <h2
-            style={{
-              fontWeight: 700,
-              fontSize: "1rem",
-              color: "#222",
-              margin: 0,
-            }}
-          >
-            Replicant Apparel
-          </h2>
-        </div>
-      </div>
     </Layout>
   );
 }
