@@ -1,3 +1,38 @@
+/* Spinner centrado vertical y horizontal */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  width: 100vw;
+}
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 10px solid #eee; /* gris claro */
+  border-top: 10px solid #d44474; /* rosa */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  background: transparent;
+  margin: 0 auto 1rem auto;
+  box-shadow: 0 2px 12px rgba(16, 185, 129, 0.1);
+}
+.spinner-text {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #9a9a9b;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .container-items {
   display: flex;
   flex-direction: row;
@@ -8,6 +43,15 @@
   padding: 1rem;
   gap: 2rem;
   margin: 0 auto;
+}
+
+.item-section-header {
+  padding: 20px 7%;
+  padding-bottom: 0;
+}
+
+.item-section-header h3 {
+  font-size: 1.5rem;
 }
 
 .container-items li {
