@@ -11,7 +11,7 @@
   width: 80px;
   height: 80px;
   border: 10px solid #eee; /* gris claro */
-  border-top: 10px solid #ff4081; /* rosa */
+  border-top: 10px solid #d44474; /* rosa */
   border-radius: 50%;
   animation: spin 1s linear infinite;
   background: transparent;
