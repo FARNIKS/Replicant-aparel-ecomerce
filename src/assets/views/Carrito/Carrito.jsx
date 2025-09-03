@@ -11,7 +11,13 @@ import "./Carrito.css";
 function Carrito() {
   const { carrito, setCarrito } = useCarritoContext();
   function removeFromCart(id) {
-    setCarrito(carrito.filter((producto) => producto.id !== id));
+    // Elimina solo una instancia del producto con ese id
+    const index = carrito.findIndex((producto) => producto.id === id);
+    if (index !== -1) {
+      const newCarrito = [...carrito];
+      newCarrito.splice(index, 1);
+      setCarrito(newCarrito);
+    }
   }
 
   const { user } = useUserContext();
@@ -25,14 +31,19 @@ function Carrito() {
       createCheckoutSession(cuenta.user.uid, carrito);
       const btn = document.getElementById("buy-button");
       btn.isDisabled = true;
-      btn.classList.add("bg-gray-500");
-      btn.classList.add("cursor-not-allowed");
       btn.innerText = "Comprando...";
     }
   }
 
   function LoginForm() {
-    return <button onClick={login}>Iniciar sesión con Google</button>;
+    return (
+      <button className="carrito-login-button" onClick={login}>
+        <div className="icon-google">
+          <img src="/Google.svg" alt="Google" />
+        </div>
+        Iniciar sesión con Google
+      </button>
+    );
   }
 
   function isAuthenticated() {
@@ -41,8 +52,6 @@ function Carrito() {
       createCheckoutSession(user.uid, carrito);
       const btn = document.getElementById("buy-button");
       btn.isDisabled = true;
-      btn.classList.add("bg-gray-500");
-      btn.classList.add("cursor-not-allowed");
       btn.innerText = "Comprando...";
     }
     if (!user) {
@@ -51,60 +60,101 @@ function Carrito() {
     }
   }
 
-  const Modal = () => (
-    <div
-      id="modal-comprar"
-      className={`absolute top-0 left-0 bg-slate-600/40 w-screen h-screen z-30 backdrop-blur-sm flex flex-col justify-center items-center ${
-        isModal ? "block" : "hidden"
-      }`}
-    >
-      <div className="bg-white w-1/3 h-1/3 flex flex-col items-center justify-evenly">
-        {" "}
-        <h3 className="font-bold text-slate-500 italic">
-          Inicia Sesión para comprar:
-        </h3>
-        <LoginForm onSubmit={login} />
+  const Modal = () => {
+    const handleGoHome = () => {
+      window.location.href = "/";
+    };
+    return (
+      <div
+        id="modal-comprar"
+        className={`modal-comprar ${isModal ? "block" : "hidden"}`}
+      >
+        <div className="modal-content">
+          <h3 className="font-bold text-slate-500 italic">
+            Inicia Sesión para comprar:
+          </h3>
+          <LoginForm onSubmit={login} />
+          <button
+            className="carrito-home-button"
+            onClick={handleGoHome}
+            style={{
+              marginTop: "1rem",
+              backgroundColor: "#10b981",
+              color: "#fff",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              style={{ verticalAlign: "middle" }}
+            >
+              <path d="M12 3l9 9-1.5 1.5L19 20a1 1 0 0 1-1 1h-4v-5H10v5H6a1 1 0 0 1-1-1v-6.5L3 12l9-9zm0 2.828L5.929 12H7v7h3v-5h4v5h3v-7h1.071L12 5.828z" />
+            </svg>
+            Volver al inicio
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <Layout>
       {/* Solo muestra el modal de login si el usuario NO está autenticado */}
       {!user && <Modal />}
-
-      <h1 className="text-3xl font-bold my-10">Tu carrito:</h1>
-
-      {carrito.length === 0 ? (
-        <>
-          <p className="text-xl">No hay productos en tu carrito</p>
-          <Link to="/" className="text-azul underline my-3">
-            Volver al inicio
-          </Link>
-        </>
-      ) : (
-        carrito?.map((producto) => (
-          <div key={producto.id} className="carrito-item flex items-center">
-            <CartItem producto={producto} />
-            <button
-              className="bg-red-500 text-white px-3 py-1 rounded ml-2"
-              onClick={() => removeFromCart(producto.id)}
+      <div className="container-items-carrito">
+        <div className="container-header">
+          <h1 className="text-3xl font-bold my-10">Tu carrito:</h1>
+          <Link
+            to="/"
+            className="text-azul underline my-3"
+            title="Volver al inicio"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              fill="currentColor"
+              viewBox="0 0 24 24"
             >
-              Eliminar
+              <path d="M12 3l9 9-1.5 1.5L19 20a1 1 0 0 1-1 1h-4v-5H10v5H6a1 1 0 0 1-1-1v-6.5L3 12l9-9zm0 2.828L5.929 12H7v7h3v-5h4v5h3v-7h1.071L12 5.828z" />
+            </svg>
+          </Link>
+        </div>
+        {carrito.length === 0 ? (
+          <>
+            <div className="mensaje-no-items">
+              <p className="mensaje-error">No hay productos en tu carrito</p>
+            </div>
+          </>
+        ) : (
+          <div className="carrito-items-container">
+            {carrito?.map((producto) => (
+              <CartItem
+                key={producto.id}
+                producto={producto}
+                onRemove={() => removeFromCart(producto.id)}
+              />
+            ))}
+          </div>
+        )}
+        {carrito?.length > 0 && (
+          <div className="contenedor-boton-comprar">
+            <button
+              id="buy-button"
+              onClick={isAuthenticated}
+              className="boton-comprar"
+            >
+              COMPRAR
             </button>
           </div>
-        ))
-      )}
-      {carrito?.length > 0 && (
-        <button
-          id="buy-button"
-          onClick={isAuthenticated}
-          className="bg-slate-800 px-5 py-3 text-white"
-        >
-          {" "}
-          COMPRAR
-        </button>
-      )}
+        )}
+      </div>
     </Layout>
   );
 }

@@ -1,8 +1,13 @@
 .container-items {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  max-width: 1600px;
   justify-content: center;
+  align-items: flex-start;
   padding: 1rem;
+  gap: 2rem;
+  margin: 0 auto;
 }
 
 .container-items li {
