@@ -81,8 +81,21 @@ function Carrito() {
               marginTop: "1rem",
               backgroundColor: "#10b981",
               color: "#fff",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
             }}
           >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              style={{ verticalAlign: "middle" }}
+            >
+              <path d="M12 3l9 9-1.5 1.5L19 20a1 1 0 0 1-1 1h-4v-5H10v5H6a1 1 0 0 1-1-1v-6.5L3 12l9-9zm0 2.828L5.929 12H7v7h3v-5h4v5h3v-7h1.071L12 5.828z" />
+            </svg>
             Volver al inicio
           </button>
         </div>
@@ -97,11 +110,21 @@ function Carrito() {
       <div className="container-items-carrito">
         <div className="container-header">
           <h1 className="text-3xl font-bold my-10">Tu carrito:</h1>
-          <button>
-            <Link to="/" className="text-azul underline my-3">
-              Volver al inicio
-            </Link>
-          </button>
+          <Link
+            to="/"
+            className="text-azul underline my-3"
+            title="Volver al inicio"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 3l9 9-1.5 1.5L19 20a1 1 0 0 1-1 1h-4v-5H10v5H6a1 1 0 0 1-1-1v-6.5L3 12l9-9zm0 2.828L5.929 12H7v7h3v-5h4v5h3v-7h1.071L12 5.828z" />
+            </svg>
+          </Link>
         </div>
         {carrito.length === 0 ? (
           <>
@@ -125,9 +148,8 @@ function Carrito() {
             <button
               id="buy-button"
               onClick={isAuthenticated}
-              className="bg-slate-800 px-5 py-3 text-white"
+              className="boton-comprar"
             >
-              {" "}
               COMPRAR
             </button>
           </div>
