@@ -1,0 +1,62 @@
+.container-perfil {
+  padding: 10px 20%;
+}
+
+.header-perfil {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.descripcion-perfil {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.descripcion-perfil p {
+  margin: 0;
+}
+
+.descripcion-perfil span {
+  font-weight: bold;
+}
+
+.tabla-compras th,
+.tabla-compras td {
+  padding: 0.85rem 10px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.perfil-tabla-container {
+  background: #f3f4f6;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(47, 125, 197, 0.1);
+  padding: 1.7rem 1.2rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #e5e7eb;
+}
+
+.tabla-compras {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(47, 125, 197, 0.07);
+}
+
+/* Nueva clase para el contenedor principal del perfil */
+.perfil-hoja {
+  max-width: 540px;
+  margin: 2.5rem auto 20px auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
