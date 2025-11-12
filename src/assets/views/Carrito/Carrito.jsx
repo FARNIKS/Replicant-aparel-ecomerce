@@ -20,14 +20,13 @@ function Carrito() {
     console.log(cuenta);
     setIsModal(false);
     if (cuenta.user) {
-      createCheckoutSession(cuenta.user.uid, carrito);
       const btn = document.getElementById("buy-button");
-      btn.isDisabled = true;
-      btn.innerText = "Comprando...";
-      // Limpiar carrito después de 2 segundos
-      setTimeout(() => {
-        limpiarCarrito();
-      }, 2000);
+      if (btn) {
+        btn.disabled = true;
+        btn.innerText = "Comprando...";
+      }
+      // Llamar checkout con el carrito actual
+      createCheckoutSession(cuenta.user.uid, carrito);
     }
   }
 
@@ -44,15 +43,13 @@ function Carrito() {
 
   function isAuthenticated() {
     if (user) {
-      // funcion de comprar
-      createCheckoutSession(user.uid, carrito);
       const btn = document.getElementById("buy-button");
-      btn.isDisabled = true;
-      btn.innerText = "Comprando...";
-      // Limpiar carrito después de 2 segundos
-      setTimeout(() => {
-        limpiarCarrito();
-      }, 2000);
+      if (btn) {
+        btn.disabled = true;
+        btn.innerText = "Comprando...";
+      }
+      // Llamar checkout con el carrito actual
+      createCheckoutSession(user.uid, carrito);
     }
     if (!user) {
       // mostrar modal
