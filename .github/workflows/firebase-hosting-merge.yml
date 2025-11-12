@@ -14,11 +14,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          # Firebase CLI v14+ requires Node >=20. Use 20.x to be safe.
+          node-version: "20"
       - name: Install dependencies
         run: npm ci
       - name: Build
         run: npm run build --if-present
+      - name: Ensure dist exists
+        run: |
+          if [ ! -d "./dist" ]; then
+            echo "Error: dist does not exist after build"
+            ls -la
+            exit 1
+          fi
+          echo "dist found:" && ls -la dist | sed -n '1,200p'
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
