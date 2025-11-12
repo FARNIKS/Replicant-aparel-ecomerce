@@ -13,10 +13,10 @@ function ItemSection({ productos, title }) {
       setLoading(true);
     }
   }, [productos]);
-  const { carrito, setCarrito } = useCarritoContext();
+  const { addToCart } = useCarritoContext();
 
   function handleAddToCart(product) {
-    setCarrito([...carrito, product]);
+    addToCart(product);
   }
 
   return (

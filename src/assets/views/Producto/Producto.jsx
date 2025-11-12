@@ -11,7 +11,7 @@ function Producto() {
   const { id } = useParams();
   const navigate = useNavigate(); // Usamos useNavigate para la redirección
   const [productInfo, setProductInfo] = useState(null);
-  const { carrito, setCarrito } = useCarritoContext();
+  const { addToCart } = useCarritoContext();
   const { user } = useUserContext(); // Obtiene el estado del usuario del contexto
 
   useEffect(() => {
@@ -26,8 +26,8 @@ function Producto() {
     getProductInfo();
   }, [id, navigate]); // Agregamos navigate a las dependencias del useEffect
 
-  function addToCart() {
-    setCarrito([...carrito, productInfo]);
+  function addToCartFunc() {
+    addToCart(productInfo);
   }
 
   function handleBuyNow() {
@@ -35,10 +35,11 @@ function Producto() {
     if (!user) {
       navigate("/perfil"); // Redirige a la página de perfil para iniciar sesión
       return;
-    } // Si el usuario SÍ está autenticado, continúa con el proceso de compra
+    }
+    // Si el usuario SÍ está autenticado, continúa con el proceso de compra
 
-    addToCart();
-    createCheckoutSession(user.uid, [{ ...productInfo }]);
+    addToCartFunc();
+    createCheckoutSession(user.uid, [{ ...productInfo, cantidad: 1 }]);
     const btn = document.getElementById("buy-button-producto");
     btn.isDisabled = true;
     btn.innerText = "Comprando...";
@@ -118,7 +119,7 @@ function Producto() {
                        {" "}
             <div className="container-botones">
                            {" "}
-              <button onClick={addToCart} className="boton-agregar">
+              <button onClick={addToCartFunc} className="boton-agregar">
                                 AÑADIR A CARRITO              {" "}
               </button>
                            {" "}

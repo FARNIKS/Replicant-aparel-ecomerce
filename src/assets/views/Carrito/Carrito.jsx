@@ -9,16 +9,8 @@ import { MdOutlineClose } from "react-icons/md";
 import "./Carrito.css";
 
 function Carrito() {
-  const { carrito, setCarrito } = useCarritoContext();
-  function removeFromCart(id) {
-    // Elimina solo una instancia del producto con ese id
-    const index = carrito.findIndex((producto) => producto.id === id);
-    if (index !== -1) {
-      const newCarrito = [...carrito];
-      newCarrito.splice(index, 1);
-      setCarrito(newCarrito);
-    }
-  }
+  const { carrito, removeFromCart, calcularTotal, limpiarCarrito } =
+    useCarritoContext();
 
   const { user } = useUserContext();
   const [isModal, setIsModal] = useState(false);
@@ -32,6 +24,10 @@ function Carrito() {
       const btn = document.getElementById("buy-button");
       btn.isDisabled = true;
       btn.innerText = "Comprando...";
+      // Limpiar carrito después de 2 segundos
+      setTimeout(() => {
+        limpiarCarrito();
+      }, 2000);
     }
   }
 
@@ -53,6 +49,10 @@ function Carrito() {
       const btn = document.getElementById("buy-button");
       btn.isDisabled = true;
       btn.innerText = "Comprando...";
+      // Limpiar carrito después de 2 segundos
+      setTimeout(() => {
+        limpiarCarrito();
+      }, 2000);
     }
     if (!user) {
       // mostrar modal
@@ -144,15 +144,34 @@ function Carrito() {
           </div>
         )}
         {carrito?.length > 0 && (
-          <div className="contenedor-boton-comprar">
-            <button
-              id="buy-button"
-              onClick={isAuthenticated}
-              className="boton-comprar"
-            >
-              COMPRAR
-            </button>
-          </div>
+          <>
+            <div className="carrito-resumen">
+              <div className="resumen-items">
+                <h3>Resumen de compra:</h3>
+                <div className="resumen-cantidad">
+                  <span>Total de items:</span>
+                  <span className="cantidad-total">
+                    {carrito.reduce((total, item) => total + item.cantidad, 0)}
+                  </span>
+                </div>
+                <div className="resumen-precio">
+                  <span>Total a pagar:</span>
+                  <span className="precio-total">
+                    ${calcularTotal().toFixed(2)}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="contenedor-boton-comprar">
+              <button
+                id="buy-button"
+                onClick={isAuthenticated}
+                className="boton-comprar"
+              >
+                COMPRAR
+              </button>
+            </div>
+          </>
         )}
       </div>
     </Layout>
